@@ -6,7 +6,6 @@ class cBaseV
   protected string $templName = '';
   protected string $htmlTemplate = '';
   protected string $localViewFolder = '/vw/htmlt/';
-  protected string $builtInViewFolder = '/cbm/vw/htmlt/';
 
   /**
    * Konstruktor
@@ -27,10 +26,6 @@ class cBaseV
   public function getTemplate(): bool|string
   {
     $fname = dirname($_SERVER['SCRIPT_FILENAME']).$this->localViewFolder.$this->templName.'.htmlt';
-    if (!file_exists($fname))
-    {
-      $fname = $_SERVER['DOCUMENT_ROOT'].$this->builtInViewFolder.$this->templName.'.htmlt';
-    }
 
     $fc = file_get_contents($fname);
 
