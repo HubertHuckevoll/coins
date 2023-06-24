@@ -1,0 +1,28 @@
+.formoTabStripe {
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 30px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+}
+
+.formoTabStripe li {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 30px;
+  padding: 3px 10px;
+  margin-left: 25px;
+  margin-right: 0;
+}
+
+.formoTabStripe li:hover {
+  cursor: pointer;
+}
+
+.formoTabStripe li.formoTabStripeActive {
+  border: 1px solid black;
+  border-bottom: 1px solid white;
+}
+
+

@@ -1,0 +1,34 @@
+.formoSliderLabel
+{
+  width: 100%;
+  display: inline-block;
+}
+
+.formoSliderWrapper
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formoSliderDec, .formoSliderInc
+{
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  display: inline-block;
+}
+
+.formoSliderRange
+{
+  display: inline-block;
+  flex: 1;
+}
+
+.formoSliderMirror
+{
+  display: inline-block;
+  padding-left: 1px;
+  padding-right: 1px;
+}

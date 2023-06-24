@@ -1,29 +1,32 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/coins/logger.php');
-
 /**
- * CBM Auto loader
+ * Coins Auto loader
  * ________________________________________________________________
  */
 spl_autoload_register(function($className)
 {
   $fname = null;
 
+  $baseFolder = $_SERVER['DOCUMENT_ROOT'].'/coins/tails/';
   $ct = substr($className, -1);
 
   switch($ct)
   {
     case 'V':
-      $fname = $_SERVER['DOCUMENT_ROOT'].'/coins/vw/'.$className.'.php';
+      $fname = $baseFolder.'vw/'.$className.'.php';
     break;
 
     case 'M':
-      $fname = $_SERVER['DOCUMENT_ROOT'].'/coins/md/'.$className.'.php';
+      $fname = $baseFolder.'md/'.$className.'.php';
     break;
 
     case 'C':
-      $fname = $_SERVER['DOCUMENT_ROOT'].'/coins/ct/'.$className.'.php';
+      $fname = $baseFolder.'ct/'.$className.'.php';
+    break;
+
+    default:
+      $fname = $baseFolder.'lb/'.$className.'.php';
     break;
   }
 
