@@ -187,9 +187,10 @@ export class RecipeJS
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
+
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
-        body: JSON.stringify(params) // body data type must match "Content-Type" header
+        body: JSON.stringify(params)
       };
 
       const resp = await fetch(url, reqData);

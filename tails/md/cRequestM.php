@@ -34,6 +34,8 @@ class cRequestM
       $req = preg_replace("/^(content-type:|bcc:|cc:|to:|from:)/im", "", $req);
     }
 
+    $reqs += $this->getJsonInput();
+
     return $reqs;
   }
 
@@ -41,7 +43,7 @@ class cRequestM
    * get path infos
    * ________________________________________________________________
    */
-  public function pathInfoAssign(): array
+  protected function pathInfoAssign(): array
   {
     $keyVal = [];
     $segments = [];
@@ -62,6 +64,17 @@ class cRequestM
     return $keyVal;
   }
 
+  /**
+   * Summary of getJsonInput
+   * @return array
+   * ________________________________________________________________
+   */
+  protected function getJsonInput(): array
+  {
+    $input = [];
+    $input = json_decode(file_get_contents('php://input'), true) ?? [];
+    return $input;
+  }
 }
 
 ?>

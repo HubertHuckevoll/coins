@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Another attempt at a view.
+ * Instead of setting the data from outside and then calling "draw"
+ * we have multiple draw functions which are passed the data as parameters.
+ * The draw functions render the data (using various render Functions),
+ * assign the rendered fragments to the c-tags (setTag) and in the
+ * end call the original "draw" function.
+ */
 class cAppV
 {
   protected array $data = [];
