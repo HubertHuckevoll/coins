@@ -1,6 +1,6 @@
 <?php
 
-class cBaseV
+class cPageV
 {
   protected array $data = [];
   protected string $templName = '';
@@ -49,14 +49,14 @@ class cBaseV
     $tagName = '';
     $str = '';
     $matches = [];
-    $re = '/<(cbm)-(.*)>/iuUs';
+    $re = '/<(c)-(.*)>/iuUs';
 
     preg_match_all($re, $this->htmlTemplate, $matches, PREG_SET_ORDER, 0);
 
     foreach($matches as $match)
     {
-      $tag = $match[0]; // <cbm-nav>
-      $prefix = $match[1]; // cbm
+      $tag = $match[0]; // <c-nav>
+      $prefix = $match[1]; // c
       $tagName = $match[2]; // nav
       $func = $prefix.ucfirst($tagName);
       $str = $this->exec($func);

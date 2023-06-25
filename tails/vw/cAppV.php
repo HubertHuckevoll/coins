@@ -1,0 +1,88 @@
+<?php
+
+class cAppV
+{
+  protected array $data = [];
+  protected string $templName = '';
+  protected string $htmlTemplate = '';
+  protected string $localViewFolder = '/vw/htmlt/';
+
+  /**
+   * Konstruktor
+   * _________________________________________________________________
+   */
+  public function __construct(string $templName)
+  {
+    $this->templName = $templName;
+    $this->htmlTemplate = $this->getTemplate();
+  }
+
+  /**
+   * Summary of getTemplate
+   * @throws \Exception
+   * @return bool|string
+   * ________________________________________________________________
+   */
+  public function getTemplate(): bool|string
+  {
+    $fname = dirname($_SERVER['SCRIPT_FILENAME']).$this->localViewFolder.$this->templName.'.htmlt';
+
+    $fc = file_get_contents($fname);
+
+    if ($fc !== false)
+    {
+      return $fc;
+    }
+    else
+    {
+      throw new Exception('Can\'t read file "'.$fname.'"');
+    }
+  }
+
+  /**
+   * replace cbm tags
+   * ________________________________________________________________
+   */
+  public function draw(): void
+  {
+    $tag = '';
+    $tagName = '';
+    $str = '';
+    $matches = [];
+    $re = '/<(c)-(.*)>/iuUs';
+
+    preg_match_all($re, $this->htmlTemplate, $matches, PREG_SET_ORDER, 0);
+
+    foreach($matches as $match)
+    {
+      $tag = $match[0]; // <c-nav>
+      $prefix = $match[1]; // c
+      $tagName = $match[2]; // nav
+      $str = $this->data[$tagName] ?? '';
+
+      $this->htmlTemplate = str_replace($tag, $str, $this->htmlTemplate);
+    }
+
+    echo $this->htmlTemplate;
+  }
+
+  /**
+   * set data key
+   * _________________________________________________________________
+   */
+  public function setTag(string $key, string $val): void
+  {
+    $this->data[$key] = $val;
+  }
+
+  /**
+   * does key/val pair exist?
+   * ________________________________________________________________
+   */
+  public function is(string $key): bool
+  {
+    return isset($this->data[$key]) ? true : false;
+  }
+}
+
+?>

@@ -2,8 +2,8 @@
 
 class cAppC
 {
-  protected string $mainControllerName = 'indexC';
-  protected string $mainMethodName = 'show';
+  protected ?string $mainControllerName = null;
+  protected ?string $mainMethodName = null;
   protected $pathInfoAssignCallback = null;
   protected ?array $prefs = null;
 
@@ -11,8 +11,11 @@ class cAppC
    * Konstruktor
    * ________________________________________________________________
    */
-  public function __construct(?callable $pathInfoAssignCallback = null, ?array $prefs = null)
+  public function __construct(string $mainControllerName, string $mainMethodName, ?callable $pathInfoAssignCallback = null, ?array $prefs = null)
   {
+    $this->mainControllerName = $mainControllerName;
+    $this->mainMethodName = $mainMethodName;
+
     $this->pathInfoAssignCallback = $pathInfoAssignCallback;
     $this->prefs = $prefs;
   }
