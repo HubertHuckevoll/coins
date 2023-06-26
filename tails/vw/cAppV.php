@@ -3,7 +3,7 @@
 /**
  * Another attempt at a view.
  * Instead of setting the data from outside and then calling "draw"
- * we have multiple draw functions which are passed the data as parameters.
+ * we have multiple draw functions which are passed data as parameters.
  * The draw functions render the data (using various render Functions),
  * assign the rendered fragments to the c-tags (setTag) and in the
  * end call the original "draw" function.
@@ -53,23 +53,13 @@ class cAppV
    */
   protected function draw(): void
   {
-    $tag = '';
-    $tagName = '';
-    $str = '';
-    $matches = [];
-    $re = '/<(c)-(.*)>/iuUs';
-
-    preg_match_all($re, $this->htmlTemplate, $matches, PREG_SET_ORDER, 0);
-
-    foreach($matches as $match)
+    $data = [];
+    foreach($this->data as $key => $val)
     {
-      $tag = $match[0]; // <c-nav>
-      $prefix = $match[1]; // c
-      $tagName = $match[2]; // nav
-      $str = $this->data[$tagName] ?? '';
-
-      $this->htmlTemplate = str_replace($tag, $str, $this->htmlTemplate);
+      $data['<c-'.$key.'>'] = $val;
     }
+
+    $this->htmlTemplate = str_replace(array_keys($data), array_values($data), $this->htmlTemplate);
 
     echo $this->htmlTemplate;
   }
