@@ -85,7 +85,7 @@ class cAppC
     $href = dirname($_SERVER['PHP_SELF']);
     $href = substr($href, 0, strrpos($href, 'index.php'));
     $href = rtrim($href, '/\\');
-    $href = $prot.$_SERVER['HTTP_HOST'].$href.'/index.php/indexC/show';
+    $href = $prot.$_SERVER['HTTP_HOST'].$href.'/index.php/'.$this->mainControllerName.'/'.$this->mainMethodName;
 
     header('Location: '.$href);
   }

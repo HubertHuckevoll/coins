@@ -51,7 +51,7 @@ class cAppV
    * replace cbm tags
    * ________________________________________________________________
    */
-  public function draw(): void
+  protected function draw(): void
   {
     $tag = '';
     $tagName = '';
@@ -78,18 +78,9 @@ class cAppV
    * set data key
    * _________________________________________________________________
    */
-  public function setTag(string $key, string $val): void
+  protected function setTag(string $key, string $val): void
   {
     $this->data[$key] = $val;
-  }
-
-  /**
-   * does key/val pair exist?
-   * ________________________________________________________________
-   */
-  public function is(string $key): bool
-  {
-    return isset($this->data[$key]) ? true : false;
   }
 }
 

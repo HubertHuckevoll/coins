@@ -8,6 +8,7 @@ class cPageC
 
   /**
    * Summary of __construct
+   * @param mixed $request
    * @param mixed $view
    * @param mixed $prefs
    * ________________________________________________________________
