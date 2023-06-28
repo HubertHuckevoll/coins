@@ -20,8 +20,8 @@
  *
  *   $this->draw();
  * }
-
  */
+
 class cAppV
 {
   protected array $data = [];
