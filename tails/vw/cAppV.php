@@ -6,7 +6,21 @@
  * we have multiple draw functions which are passed data as parameters.
  * The draw functions render the data (using various render Functions),
  * assign the rendered fragments to the c-tags (setTag) and in the
- * end call the original "draw" function.
+ * end call the original "draw" function:
+ *
+ * public function drawPage(array $index, array $article): void
+ * {
+ *   $this->setTag('base', $this->renderBaseTag());
+ *   $this->setTag('title', $article['title']);
+ *   $this->setTag('metadata', $this->renderArticleMetadata($article));
+ *   $this->setTag('date', $this->renderDate($article['date']));
+ *   $this->setTag('article', $article['content']);
+ *   $this->setTag('images', $this->renderImageList($article, $index['tags']));
+ *   $this->setTag('footer', '<a href="'.$this->renderHrefIndex($index['articleBoxPage'], $index['tags']).'">Zurück</a>');
+ *
+ *   $this->draw();
+ * }
+
  */
 class cAppV
 {
