@@ -3,7 +3,7 @@
 class cPageC
 {
   protected array $request = [];
-  protected object $view; // optional - in case you want to have a hook-specific views
+  protected ?object $view; // optional - in case you want to have a hook-specific views
   protected ?array $prefs = null;
 
   /**
