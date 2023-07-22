@@ -53,23 +53,15 @@ class cAppC
   protected function exec(array $request, string $modName, string $methodName): void
   {
     $controllerObj = null;
+    $controllerObj = new $modName($request, $this->prefs);
 
-    try
+    if ((isset($controllerObj) && method_exists($controllerObj, $methodName)))
     {
-      $controllerObj = new $modName($request, $this->prefs);
-
-      if ((isset($controllerObj) && method_exists($controllerObj, $methodName)))
-      {
-        call_user_func(array($controllerObj, $methodName));
-      }
-      else
-      {
-        throw new Exception('Unknown message.');
-      }
+      call_user_func(array($controllerObj, $methodName));
     }
-    catch (Throwable $e)
+    else
     {
-      die($e->getMessage());
+      throw new Exception('Unknown message.');
     }
   }
 
