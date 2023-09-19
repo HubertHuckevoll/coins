@@ -8,7 +8,7 @@ spl_autoload_register(function($className)
 {
   $fname = null;
 
-  $baseFolder = $_SERVER['DOCUMENT_ROOT'].'/coins/tails/';
+  $baseFolder = $_SERVER['DOCUMENT_ROOT'].'/coins/tails/v1/';
   $ct = substr($className, -1);
 
   switch($ct)
