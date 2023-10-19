@@ -219,14 +219,17 @@ class RecipeV
     ]);
   }
 
-  public function send(): void
-  {
-    echo json_encode($this->out);
-  }
-
   protected function addOutput($data): void
   {
     array_push($this->out, $data);
+  }
+
+  public function send(): void
+  {
+    header_remove();
+    http_response_code(200);
+    header("Content-Type: application/json");
+    echo json_encode($this->out);
   }
 
 }
