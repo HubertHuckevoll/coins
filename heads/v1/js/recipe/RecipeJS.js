@@ -219,6 +219,9 @@ export class RecipeJS
         {
           try
           {
+            await this.modules[rcp.module].exec(rcp.method, rcp);
+
+            /*
             if (rcp.module !== 'event')
             {
               this.detach();
@@ -237,6 +240,7 @@ export class RecipeJS
             {
               this.attach();
             }
+            */
           }
           catch (e)
           {
