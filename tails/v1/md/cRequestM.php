@@ -14,7 +14,7 @@ class cRequestM
    * @param callable $pathInfoAssignCallback
    * ________________________________________________________________
    */
-  public function __construct(callable $pathInfoAssignCallback = null)
+  public function __construct(?callable $pathInfoAssignCallback = null)
   {
     $this->pathInfoAssignCallback = $pathInfoAssignCallback;
   }
